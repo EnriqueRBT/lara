@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 
@@ -40,12 +41,19 @@ class ProductController extends Controller
 
         // Esto da este error: Object of type Illuminate\Http\Request is not callable
 
-        DB::table('products')->insert([
-            "name" => $request()->input('name'),
-            "description" => $request()->input('description'),
-            "price" => $request()->input('price'),
+        // DB::table('products')->insert([
+        //     "name" => $request()->input('name'),
+        //     "description" => $request()->input('description'),
+        //     "price" => $request()->input('price'),
+        // ]);
 
+        DB::table('products')->insert([
+            "name" =>  $request->input('name'),
+            "description" =>  $request->input('description'),
+            "price" => $request->input('price'),
         ]);
+
+        return "Producto añadido";
     }
 
     /**
