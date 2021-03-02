@@ -1,4 +1,6 @@
 @extends('layout')
 @section('contenido')
-    <div>Aquí se muestra un producto</div>
+    <h2>{{$product->name}}</h2>
+    <p>{{$product->description}}</p>
+    <h5>Precio por unidad: {{$product->price}}€ </h5>
 @endsection

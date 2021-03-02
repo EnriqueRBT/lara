@@ -16,9 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = DB::table('products')->get();
-
         return view('products.index', compact('products'));
-
 
     }
 
@@ -40,23 +38,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // Esto de abajo da error: SQLSTATE[HY093]: Invalid parameter number (SQL: insert into products (name,description,price) values (name,description,price))
-        // DB::insert('insert into products (name,description,price) values (name,description,price)', [1, 'Dayle']);
-
-        // Esto da este error: Object of type Illuminate\Http\Request is not callable
-
-        // DB::table('products')->insert([
-        //     "name" => $request()->input('name'),
-        //     "description" => $request()->input('description'),
-        //     "price" => $request()->input('price'),
-        // ]);
-
         DB::table('products')->insert([
             "name" =>  $request->input('name'),
             "description" =>  $request->input('description'),
             "price" => $request->input('price'),
+            "created_at" => new Carbon(),
+            "updated_at" => new Carbon(),
         ]);
-
         return view('products.index');
     }
 
@@ -68,7 +56,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('products.show');
+        $product = DB::table('products')->where('id',$id)->first();
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -79,7 +68,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        return view('products.update');
+        $product = DB::table('products')->where('id',$id)->first();
+        return view('products.edit',compact('product'));
     }
 
     /**
@@ -91,7 +81,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('products')->update([
+            "name" =>  $request->input('name'),
+            "description" =>  $request->input('description'),
+            "price" => $request->input('price'),
+        ]);
+        return view('products.show',compact('product'));
     }
 
     /**
