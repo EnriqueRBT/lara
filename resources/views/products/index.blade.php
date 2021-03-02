@@ -10,12 +10,17 @@
             </tr>
         </thead>
         <tbody>
+      {{-- @php
+           $products = DB::table('products')->get();
+      @endphp --}}
+            @foreach ($products as $product)
             <tr>
-                <td scope="row"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{$product->id}}</td>
+                <td>{{$product->name}}</td>
+                <td>{{$product->description}}</td>
+                <td>{{$product->price}}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

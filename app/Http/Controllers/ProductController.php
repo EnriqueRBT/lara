@@ -15,7 +15,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = DB::table('products')->get();
+
+        return view('products.index', compact('products'));
+
+
     }
 
     /**
@@ -53,7 +57,7 @@ class ProductController extends Controller
             "price" => $request->input('price'),
         ]);
 
-        return "Producto añadido";
+        return view('products.index');
     }
 
     /**

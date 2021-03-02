@@ -15,6 +15,9 @@
             <a class="nav-link" href="{{route('products.index')}}">Indíce</a>
         </li> --}}
         <li class="nav-item">
+            <a class="nav-link" href="{{route('products.index')}}">Listado de productos</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{route('products.create')}}">Crear productos</a>
         </li>
     </ul>
