@@ -24,11 +24,11 @@
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>
                 <td>
-                <a href="{{route('products.edit', $product->id)}}">Editar</a>
-                <form method="POST" action="{{route('products.destroy', $product->id)}}">
+                <a href="{{route('products.edit', $product->id)}}" class="btn btn-outline-primary">Editar</a>
+                <form method="POST" class="d-inline" action="{{route('products.destroy', $product->id)}}">
                     {!!method_field('DELETE')!!}
                     @csrf
-                    <button type="submit">Borrar</button>
+                    <button type="submit" class="btn btn-outline-danger">Borrar</button>
                 </form>
                 </td>
             </tr>
