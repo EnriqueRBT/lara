@@ -81,12 +81,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('products')->update([
+        DB::table('products')->where('id',$id)->update([
             "name" =>  $request->input('name'),
             "description" =>  $request->input('description'),
             "price" => $request->input('price'),
+            "updated_at" => new Carbon(),
         ]);
-        return view('products.show',compact('product'));
+        return redirect()->route('products.index');
     }
 
     /**
@@ -97,6 +98,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        return view('products.destroy');
+        $product = DB::table('products')->where('id',$id)->delete();
+        return view('products.index');
     }
 }

@@ -1,7 +1,8 @@
 @extends('layout')
 @section('contenido')
 
-<form action="{{route('products.store')}}" method="post">
+<form method="POST" action="{{route('products.store')}}">
+    @csrf
     <p><label for="name">Nombre
         <input type="text" name="name"></label>
     </p>
@@ -14,7 +15,6 @@
     <p><label for="photo">Imagen
         <input type="file" name="photo"></label>
     </p>
-        <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <input type="submit" value="Enviar">
 </form>
 
