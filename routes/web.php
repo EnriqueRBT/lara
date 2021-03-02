@@ -16,11 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout');
+    return view('products.index');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('products',ProductController::class)->only(['create','update','destroy','index']);
+Route::resource('products',ProductController::class);
+
+// Route::get('products/create', ['as' => 'products.create','ProductController@create']);

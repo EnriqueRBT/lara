@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('index');
+        return view('products.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-       return view('create');
+       return view('products.create');
     }
 
     /**
@@ -34,7 +35,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Esto de abajo da error: SQLSTATE[HY093]: Invalid parameter number (SQL: insert into products (name,description,price) values (name,description,price))
+        // DB::insert('insert into products (name,description,price) values (name,description,price)', [1, 'Dayle']);
+
+        // Esto da este error: Object of type Illuminate\Http\Request is not callable
+
+        DB::table('products')->insert([
+            "name" => $request()->input('name'),
+            "description" => $request()->input('description'),
+            "price" => $request()->input('price'),
+
+        ]);
     }
 
     /**
@@ -45,7 +56,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('show');
+        return view('products.show');
     }
 
     /**
@@ -56,7 +67,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        return view('update');
+        return view('products.update');
     }
 
     /**
@@ -79,6 +90,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        return view('destroy');
+        return view('products.destroy');
     }
 }
