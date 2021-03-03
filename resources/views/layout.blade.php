@@ -23,8 +23,11 @@
     </ul>
 </nav>
 
+<div class=" pt-3 container">
+    @yield('contenido')
+</div>
 
-@yield('contenido')
+
 <footer>QR 2021</footer>
 </body>
 </html>
