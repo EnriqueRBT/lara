@@ -43,33 +43,16 @@ class ProductController extends Controller
         ->where("name", $request->name)
         ->exists();
 
-    if ($isExist) {
-    return('El producto ya existe');
-    }else{
-
-    DB::table('products')->insert([
-        "name" =>  $request->input('name'),
-        "description" =>  $request->input('description'),
-        "price" => $request->input('price'),
-        "created_at" => new Carbon(),
-        "updated_at" => new Carbon(),
-    ]);
-    return view('products.index');
-    
-}
-
-
-
-
-
-    //     $product = new Product;
-    //     $product->name = $request->name;
-    //     $product->description = $request->description;
-    //     $product->price = $request->price;
-    //     $product->created_at = new Carbon();
-    //     $product->updated_at = new Carbon();
-    //     return view('products.index');
-
+        if ($isExist) {
+        return('El producto ya existe');
+        }else{
+        $product = new Product;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->save();
+        return view('products.index'); 
+        }
      }
 
     /**
