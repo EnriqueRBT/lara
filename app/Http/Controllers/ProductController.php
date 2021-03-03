@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Product;
 use DB;
 
 class ProductController extends Controller
@@ -38,15 +39,38 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('products')->insert([
-            "name" =>  $request->input('name'),
-            "description" =>  $request->input('description'),
-            "price" => $request->input('price'),
-            "created_at" => new Carbon(),
-            "updated_at" => new Carbon(),
-        ]);
-        return view('products.index');
-    }
+        $isExist = Product::select("*")
+        ->where("name", $request->name)
+        ->exists();
+
+    if ($isExist) {
+    return('El producto ya existe');
+    }else{
+
+    DB::table('products')->insert([
+        "name" =>  $request->input('name'),
+        "description" =>  $request->input('description'),
+        "price" => $request->input('price'),
+        "created_at" => new Carbon(),
+        "updated_at" => new Carbon(),
+    ]);
+    return view('products.index');
+    
+}
+
+
+
+
+
+    //     $product = new Product;
+    //     $product->name = $request->name;
+    //     $product->description = $request->description;
+    //     $product->price = $request->price;
+    //     $product->created_at = new Carbon();
+    //     $product->updated_at = new Carbon();
+    //     return view('products.index');
+
+     }
 
     /**
      * Display the specified resource.
