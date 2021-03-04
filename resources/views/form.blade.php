@@ -9,7 +9,7 @@
     <p><label for="description">Descripción
         <textarea rows="4" cols="50" name="description" 
             @isset($product)
-            value="{{$product->description}}"
+            placeholder="{{$product->description}}"
             @endisset
             ></textarea></label>
     </p>
