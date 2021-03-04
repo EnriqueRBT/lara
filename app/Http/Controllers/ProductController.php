@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->get();
+        $products = Product::latest()->paginate(10);
         return view('products.index', compact('products'));
 
     }
@@ -50,8 +50,9 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->bbdate = $request->bbdate;
         $product->save();
-        return view('products.index'); 
+        return view('products.index')->with('success', 'El producto ha sido creado');; 
         }
      }
 
@@ -63,6 +64,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+
         $product = DB::table('products')->where('id',$id)->first();
         return view('products.show',compact('product'));
     }

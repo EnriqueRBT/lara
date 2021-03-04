@@ -1,5 +1,12 @@
 @extends('layout')
 @section('contenido')
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>
+</div>
+@endif
+
     <table class="table">
         <thead>
             <tr>
@@ -7,12 +14,13 @@
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Precio</th>
+                <th>Fecha de Caducidad</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
       @php
-           $products = DB::table('products')->get();
+        //    $products = DB::table('products')->get();
       @endphp
             @foreach ($products as $product)
             <tr>
@@ -23,6 +31,7 @@
                 </td>
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>
+                <td><time>{{$product->bbdate}}</time></td>
                 <td>
                 <a href="{{route('products.edit', $product->id)}}" class="btn btn-outline-primary">Editar</a>
                 <form method="POST" class="d-inline" action="{{route('products.destroy', $product->id)}}">

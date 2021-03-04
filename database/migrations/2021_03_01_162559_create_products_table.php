@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->decimal('price',$total = 8, $places = 2,$unsigned = true);
+            $table->date('bbdate');
             $table->string('photo')->nullable();
             $table->timestamps();
         });
