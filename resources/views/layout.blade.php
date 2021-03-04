@@ -11,9 +11,6 @@
 <body>
 <nav class="navbar navbar-expand navbar-light bg-light">
     <ul class="nav navbar-nav">
-        {{-- <li class="nav-item">
-            <a class="nav-link" href="{{route('products.index')}}">Indíce</a>
-        </li> --}}
         <li class="nav-item">
             <a class="nav-link" href="{{route('products.index')}}">Listado de productos</a>
         </li>
@@ -21,7 +18,16 @@
             <a class="nav-link" href="{{route('products.create')}}">Crear productos</a>
         </li>
     </ul>
+    <form style="display: inline" method="POST" action="{{ route('logout') }}">
+        @csrf
+        <x-jet-dropdown-link href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                        this.closest('form').submit();">
+            {{ __('Log Out') }}
+        </x-jet-dropdown-link>
+    </form>
 </nav>
+
 
 <div class=" pt-3 container">
     @yield('contenido')

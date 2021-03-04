@@ -1,12 +1,19 @@
 @extends('layout')
 @section('contenido')
 
+    
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
     <p>{{ $message }}</p>
 </div>
 @endif
+@php
+    use App\Models\Product;
+    $products = Product::all();
+@endphp
 
+@auth
+    
     <table class="table">
         <thead>
             <tr>
@@ -43,4 +50,6 @@
             @endforeach
         </tbody>
     </table>
+    @endauth
+
 @endsection
