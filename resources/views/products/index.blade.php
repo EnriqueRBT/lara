@@ -1,7 +1,6 @@
 @extends('layout')
 @section('contenido')
-
-    
+  
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
     <p>{{ $message }}</p>
@@ -51,5 +50,9 @@
         </tbody>
     </table>
     @endauth
+
+    @guest
+        <h3>Debe de hacer login para ver esta página</h3>
+    @endguest
 
 @endsection
