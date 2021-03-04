@@ -20,7 +20,7 @@
             @endisset></label>
     </p>
     <p><label for="bbdate">Fecha de Caducidad
-        <input type="date" name="bbdate" required
+        <input type="date" name="bbdate" min="<?php echo date('Y-m-d'); ?>" required
             @isset($product)
             value="{{$product->bbdate}}"
             @endisset></label>
