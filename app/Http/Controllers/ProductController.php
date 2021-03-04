@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(10);
+        $products = Product::all();
         return view('products.index', compact('products'));
 
     }
@@ -52,7 +52,12 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
         $product->save();
-        return view('products.index')->with('success', 'El producto ha sido creado');; 
+
+        return redirect()->route('products.index')
+        ->with('success', 'El producto se ha creado.');
+
+        // $products = Product::all();
+        // return view('products.index',compact('products'))->with('success', 'El producto ha sido creado');; 
         }
      }
 

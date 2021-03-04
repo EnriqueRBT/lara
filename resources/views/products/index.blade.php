@@ -20,7 +20,6 @@
         </thead>
         <tbody>
       @php
-        //    $products = DB::table('products')->get();
       @endphp
             @foreach ($products as $product)
             <tr>
