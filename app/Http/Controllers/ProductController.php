@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use DB;
 
 class ProductController extends Controller
 {
@@ -55,9 +54,6 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
         ->with('success', 'El producto se ha creado.');
-
-        // $products = Product::all();
-        // return view('products.index',compact('products'))->with('success', 'El producto ha sido creado');; 
         }
      }
 
@@ -67,10 +63,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
 
-        $product = DB::table('products')->where('id',$id)->first();
+    public function show (Product $product)
+    {
         return view('products.show',compact('product'));
     }
 
