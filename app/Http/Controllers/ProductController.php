@@ -109,7 +109,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
-        $product->photo = $request->file('photo')->store('');
+        $product->photo = $request->file('photo')->store('public');
         $product->save();
 
 

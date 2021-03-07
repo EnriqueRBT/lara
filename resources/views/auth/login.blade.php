@@ -42,7 +42,12 @@
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>
+
             </div>
         </form>
+        <br>
+        <div>
+            <a href="{{'register'}}">Or register</a>
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>
