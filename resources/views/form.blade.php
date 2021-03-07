@@ -26,7 +26,7 @@
             @endisset></label>
     </p>
     <p>
-        <label for="photo">Imagen<input type="file" name="photo">
+        <label for="photo">Imagen<input type="file" name="photo"></label>
     </p>
-        <input type="submit" value="Enviar">
+        <input type="submit" class="btn btn-primary" value="Enviar">
 </form>

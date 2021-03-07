@@ -1,18 +1,17 @@
 @extends('layout')
-@section('contenido')
-  
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-    <p>{{ $message }}</p>
-</div>
-@endif
-@php
-    use App\Models\Product;
-    $products = Product::all();
-@endphp
 
-@auth
+@section('contenido')
     
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
+    </div>
+    @endif
+    @php
+        use App\Models\Product;
+        $products = Product::all();
+    @endphp
+ 
     <table class="table">
         <thead>
             <tr>
@@ -25,8 +24,6 @@
             </tr>
         </thead>
         <tbody>
-      @php
-      @endphp
             @foreach ($products as $product)
             <tr>
                 <td>{{$product->id}}</td>
@@ -49,10 +46,4 @@
             @endforeach
         </tbody>
     </table>
-    @endauth
-
-    @guest
-        <h3>Debe de hacer login para ver esta página</h3>
-    @endguest
-
 @endsection

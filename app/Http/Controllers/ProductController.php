@@ -51,6 +51,8 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
+        $product->photo = $request->file('photo')->store('public');
+
         $product->save();
 
         return redirect()->route('products.index')
@@ -76,12 +78,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+// Esta funcion no puede pasar por el modelo para que no se cambie el formato de la
+// fecha y así que el value del form pueda recoger la fecha almacenada
+
     public function edit ($id)
     {
         $product = DB::table('products')->where('id',$id)->first();
         return view('products.edit',compact('product'));
-
-        // return view('products.edit',compact('product'));
 
     }
 
@@ -105,6 +109,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
+        $product->photo = $request->file('photo')->store('');
         $product->save();
 
 

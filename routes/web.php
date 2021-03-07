@@ -28,4 +28,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
     return view('products.index');
 });
 
-Route::resource('products',ProductController::class);
+Route::resource('products',ProductController::class)->middleware('auth');
