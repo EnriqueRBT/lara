@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductsTranslations;
 use DB;
 
 class ProductController extends Controller
@@ -39,25 +40,39 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $isExist = Product::select("*")
-        ->where("name", $request->name)
-        ->exists();
-
-        if ($isExist) {
-        return('El producto ya existe');
-        }else{
         $product = new Product;
-        $product->name = $request->name;
-        $product->description = $request->description;
+        $product->translateOrNew('es')->name = $request->name_es;
+        $product->translateOrNew('en')->name = $request->name_en;
+        $product->translateOrNew('es')->description = $request->description_es;
+        $product->translateOrNew('en')->description = $request->description_en;
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
         $product->photo = $request->file('photo')->store('public');
-
         $product->save();
 
         return redirect()->route('products.index')
         ->with('success', 'El producto se ha creado.');
-        }
+
+
+        // $isExist = Product::select("*")
+        // ->where("name", $request->name)
+        // ->exists();
+
+        // if ($isExist) {
+        // return('El producto ya existe');
+        // }else{
+        // $product = new Product;
+        // $product->name = $request->name;
+        // $product->description = $request->description;
+        // $product->price = $request->price;
+        // $product->bbdate = $request->bbdate;
+        // $product->photo = $request->file('photo')->store('public');
+
+        // $product->save();
+
+        // return redirect()->route('products.index')
+        // ->with('success', 'El producto se ha creado.');
+        // }
      }
 
     /**

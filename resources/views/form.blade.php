@@ -1,18 +1,35 @@
 @csrf
-    <p><label for="name">Nombre
-        <input type="text" name="name" required
+    <p><label for="name_es">Nombre
+        <input type="text" name="name_es" required
             @isset($product)
             value="{{$product->name}}"    
             @endisset
        ></label>
     </p>
-    <p><label for="description">Descripción
-        <textarea rows="4" cols="50" name="description" 
+    <p><label for="name_es">Name
+        <input type="text" name="name_en" required
+            @isset($product)
+            value="{{$product->name}}"    
+            @endisset
+       ></label>
+    </p>
+    <p><label for="description_es">Descripción
+        <textarea rows="4" cols="50" name="description_es" 
             @isset($product)
             placeholder="{{$product->description}}"
             @endisset
             ></textarea></label>
     </p>
+    <p><label for="description_en">Description
+        <textarea rows="4" cols="50" name="description_en" 
+            @isset($product)
+            placeholder="{{$product->description}}"
+            @endisset
+            ></textarea></label>
+    </p>
+
+
+
     <p><label for="price">Precio
         <input type="number" name="price" step="any" required
             @isset($product)

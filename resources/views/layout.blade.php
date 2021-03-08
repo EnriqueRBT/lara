@@ -12,13 +12,13 @@
     <nav class="navbar navbar-expand bg-light">
         <div class="navbar-header">
             <a class="navbar-brand display-3"  href="{{route('products.index')}}">Lara Shop</a>
-          </div>
-        <ul class="nav navbar-nav navbar-left">
+        </div>
+        <ul class="nav navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products.create')}}">Crear productos</a>
             </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav">
             <li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -30,6 +30,15 @@
                 </form>
             </li>
         </ul>
+
+        <ul class="nav nav-tabs navbar-right">
+            <li class="nav-item">
+                <a class="nav-link bg-aqua-active" href="#" id="english-link">EN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="spanish-link">ES</a>
+            </li>
+         </ul>
     </nav>
 
     <div class=" pt-3 container">
