@@ -19,15 +19,18 @@
             </li>
         </ul>
         <ul class="nav navbar-nav">
-            <li>
+            <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                    <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                             this.closest('form').submit();">
                             {{ __('Log Out') }}
-                    </x-jet-dropdown-link>
+                    </a>
                 </form>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('profile.show')}}">{{__('Profile')}}</a>
             </li>
         </ul>
 
