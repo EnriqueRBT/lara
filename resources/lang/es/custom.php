@@ -19,6 +19,7 @@ return [
     'FechaCad' => 'Fecha de Caducidad',
  	'Acciones' => 'Acciones',
     'Profile' => 'Perfil',
+    'Imagen' => 'Imagen',
 
    
 ];

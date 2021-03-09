@@ -19,5 +19,7 @@ return [
     'FechaCad' => 'Best Before',
  	'Acciones' => 'Actions',
     'Profile' => 'Profile',
+    'Imagen' => 'Image',
+
    
 ];
