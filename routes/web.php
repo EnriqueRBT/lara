@@ -29,3 +29,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 });
 
 Route::resource('products',ProductController::class)->middleware('auth');
+
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);

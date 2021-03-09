@@ -11,11 +11,11 @@
 <body>
     <nav class="navbar navbar-expand bg-light">
         <div class="navbar-header">
-            <a class="navbar-brand display-3"  href="{{route('products.index')}}">Lara Shop</a>
+            <a class="navbar-brand display-3"  href="{{route('products.index')}}">{{__('custom.Titulo')}}</a>
         </div>
         <ul class="nav navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="{{route('products.create')}}">Crear productos</a>
+                <a class="nav-link" href="{{route('products.create')}}">{{__('custom.CrearP')}}</a>
             </li>
         </ul>
         <ul class="nav navbar-nav">
@@ -30,18 +30,35 @@
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('profile.show')}}">{{__('Profile')}}</a>
+                <a class="nav-link" href="{{route('profile.show')}}">{{__('custom.Profile')}}</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ Config::get('languages')[App::getLocale()] }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                @foreach (Config::get('languages') as $lang => $language)
+                    @if ($lang != App::getLocale())
+                            <a class="dropdown-item" href="{{ route('lang.switch', $lang) }}"> {{$language}}</a>
+                    @endif
+                @endforeach
+                </div>
             </li>
         </ul>
 
-        <ul class="nav nav-tabs navbar-right">
+
+
+
+        
+        {{-- <ul class="nav nav-tabs navbar-right">
             <li class="nav-item">
                 <a class="nav-link bg-aqua-active" href="#" id="english-link">EN</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" id="spanish-link">ES</a>
             </li>
-         </ul>
+         </ul> --}}
     </nav>
 
     <div class=" pt-3 container">
