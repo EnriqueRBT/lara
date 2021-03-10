@@ -16,10 +16,10 @@ class Product extends Model implements TranslatableContract
 
 // Accesor para mostrar el formato de la fecha tal y como lo entendemos
 
-    public function getBbdateAttribute($value)
-    {
-        return Carbon::parse($value)->format('d/m/Y');
-    }
+    // public function getBbdateAttribute($value)
+    // {
+    //     return Carbon::parse($value)->format('d/m/Y');
+    // }
 
     public function getPhotoAttribute($value){
 

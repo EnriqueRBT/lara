@@ -4,6 +4,10 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
+        <div class="display-4 justify-content-center">
+            <p>{{__('Custom.Titulo')}}</p>
+        </div>
+
         <div class="card-body">
 
             <x-jet-validation-errors class="mb-3 rounded-0" />
@@ -52,6 +56,11 @@
                         <x-jet-button>
                             {{ __('Log in') }}
                         </x-jet-button>
+                    </div>
+                    <div class="mb-0">
+                        <div class="d-flex align-items-baseline">
+                            <a class="text-muted mr-3" href="{{ route('register')}}">{{__('Or register')}}</a>
+                        </div>
                     </div>
                 </div>
             </form>

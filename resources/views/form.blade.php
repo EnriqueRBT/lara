@@ -1,29 +1,30 @@
 @csrf
+<div class="form-group">
     <p><label for="name_es">{{__('Custom.Nombre')}}-ES
-        <input type="text" name="name_es" required
+        <input type="text" class="form-control " name="name_es" required
             @isset($product)
-            value="{{$product->name}}"    
+            value="{{$product_es->name}}"    
             @endisset
        ></label>
     </p>
     <p><label for="name_en">{{__('Custom.Nombre')}}-EN
-        <input type="text" name="name_en" required
+        <input type="text" class="form-control" name="name_en" required
             @isset($product)
-            value="{{$product->name}}"    
+            value="{{$product_en->name}}"    
             @endisset
        ></label>
     </p>
     <p><label for="description_es">{{__('Custom.Descripcion')}}-ES
-        <textarea rows="4" cols="50" name="description_es" 
+        <textarea rows="4"  class="form-control" cols="50" name="description_es" 
             @isset($product)
-            placeholder="{{$product->description}}"
+            placeholder="{{$product_es->description}}"
             @endisset
             ></textarea></label>
     </p>
     <p><label for="description_en">{{__('Custom.Descripcion')}}-EN
-        <textarea rows="4" cols="50" name="description_en" 
+        <textarea rows="4" class="form-control" cols="50" name="description_en" 
             @isset($product)
-            placeholder="{{$product->description}}"
+            placeholder="{{$product_en->description}}"
             @endisset
             ></textarea></label>
     </p>
@@ -31,19 +32,20 @@
 
 
     <p><label for="price">{{__('Custom.Precio')}}
-        <input type="number" name="price" step="any" required
+        <input type="number" class="form-control" name="price" step="any" required
             @isset($product)
             value="{{$product->price}}"
             @endisset></label>
     </p>
     <p><label for="bbdate">{{__('Custom.FechaCad')}}
-        <input type="date" name="bbdate" min="<?php echo date('Y-m-d'); ?>" required
+        <input type="date" class="form-control" name="bbdate" min="<?php echo date('Y-m-d'); ?>" required
             @isset($product)
             value="{{$product->bbdate}}"
             @endisset></label>
     </p>
     <p>
-        <label for="photo">{{__('Custom.Imagen')}}<input type="file" name="photo"></label>
+        <label for="photo">{{__('Custom.Imagen')}}<input type="file" class="form-control" name="photo"></label>
     </p>
         <input type="submit" class="btn btn-primary" value="Enviar">
+</div>
 </form>

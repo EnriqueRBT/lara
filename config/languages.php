@@ -1,6 +1,13 @@
-
 <?php
+
 return [
-    'en' => 'English',
-    'es' => 'Español'
+    'en' => [
+        'display' => 'English',
+        'flag-icon' => 'gb'
+
+    ],
+    'es' => [
+        'display' => 'Español',
+        'flag-icon' => 'es'
+    ],
 ];

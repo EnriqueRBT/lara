@@ -20,6 +20,9 @@ return [
  	'Acciones' => 'Acciones',
     'Profile' => 'Perfil',
     'Imagen' => 'Imagen',
+    'EditarP' => 'Editar Producto',
+    'Editar' => 'Editar',
+    'Borrar' => 'Borrar',
 
    
 ];

@@ -99,8 +99,9 @@ class ProductController extends Controller
 
     public function edit ($id)
     {
-        $product = DB::table('products')->where('id',$id)->first();
-        return view('products.edit',compact('product'));
+        $product = Product::find($id);
+        // $product = DB::table('products')->where('id',$id)->first();
+         return view('products.edit',compact('product'));
 
     }
 
@@ -120,8 +121,10 @@ class ProductController extends Controller
         //     "updated_at" => new Carbon(),
         // ]);
         $product = Product::find($id);
-        $product->name = $request->name;
-        $product->description = $request->description;
+        $product->translateOrNew('es')->name = $request->name_es;
+        $product->translateOrNew('en')->name = $request->name_en;
+        $product->translateOrNew('es')->description = $request->description_es;
+        $product->translateOrNew('en')->description = $request->description_en;
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
         $product->photo = $request->file('photo')->store('public');

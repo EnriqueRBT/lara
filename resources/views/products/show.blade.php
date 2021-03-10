@@ -2,9 +2,15 @@
 
 
 @section('contenido')
-    <h2>{{$product->name}}</h2>
-    <p>{{$product->description}}</p>
-    <h5>Precio por unidad: {{$product->price}}€ </h5>
-    <h5>Consumir preferentemente antes del: {{$product->bbdate}}</h5>
-    <img src="../storage/{{$product->photo}}" alt="No hay imagen">
+
+<div class="card" style="width: 25rem;">
+
+    <h2 class="card-title">{{$product->name}}</h2>
+    <p class="card-body">{{$product->description}}</p>
+    <p class="card-text">Precio por unidad: {{$product->price}}€ </p>
+    <p class="card-text">Consumir preferentemente antes del: {{$product->bbdate}}</p>
+    <img  class="card-img-top" src="../storage/{{$product->photo}}" alt="No hay imagen">
+
+
+</div>
 @endsection
