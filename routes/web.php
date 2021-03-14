@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    return view('products.index');
+    return redirect ('/products');
 });
 
 Route::resource('products',ProductController::class)->middleware('auth');
