@@ -1,5 +1,5 @@
 @csrf
-<div class="form-group">
+<div class="form-group p-4 m-3">
     <p><label for="name_es">{{__('Custom.Nombre')}}-ES
         <input type="text" class="form-control " name="name_es" required
             @isset($product)

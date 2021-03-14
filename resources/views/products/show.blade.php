@@ -3,7 +3,7 @@
 
 @section('contenido')
 
-<div class="card" style="width: 25rem;">
+<div class="card p-3 m-4" style="width: 25rem;">
 
     <h2 class="card-title">{{$product->name}}</h2>
     <p class="card-body">{{$product->description}}</p>
