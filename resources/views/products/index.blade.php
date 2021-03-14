@@ -2,11 +2,21 @@
 
 @section('contenido')
     
-    @if ($message = Session::get('success'))
+    @if ($message = Session::get('created'))
+    
     <div class="alert alert-success">
-        <p>{{ $message }}</p>
+        <p>{{__('Custom.Created')}}</p>
+    </div>
+    @elseif ($message = Session::get('updated'))
+    <div class="alert alert-warning">
+        <p>{{__('Custom.Updated')}}</p>
+    </div>
+    @elseif ($message = Session::get('deleted'))
+    <div class="alert alert-danger">
+        <p>{{__('Custom.Deleted')}}</p>
     </div>
     @endif
+
     @php
         use App\Models\Product;
         $products = Product::all();

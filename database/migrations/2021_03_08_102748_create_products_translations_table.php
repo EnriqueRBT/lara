@@ -23,7 +23,7 @@ class CreateProductsTranslationsTable extends Migration
      
             // Actual fields you want to translate
             $table->string('name');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             
             $table->timestamps();
         });

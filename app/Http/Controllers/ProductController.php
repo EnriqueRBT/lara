@@ -47,11 +47,15 @@ class ProductController extends Controller
         $product->translateOrNew('en')->description = $request->description_en;
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
-        $product->photo = $request->file('photo')->store('public');
+        if(!empty($request->photo)){
+            $product->photo = $request->file('photo')->store('public');
+        }
         $product->save();
 
+        
+
         return redirect()->route('products.index')
-        ->with('success', 'El producto se ha creado.');
+        ->with('created','-');
 
 
         // $isExist = Product::select("*")
@@ -127,12 +131,14 @@ class ProductController extends Controller
         $product->translateOrNew('en')->description = $request->description_en;
         $product->price = $request->price;
         $product->bbdate = $request->bbdate;
-        $product->photo = $request->file('photo')->store('public');
+        if(!empty($request->photo)){
+            $product->photo = $request->file('photo')->store('public');
+        }
         $product->save();
 
 
         return redirect()->route('products.index')
-        ->with('success', 'El producto se ha actualizado correctamente.');
+        ->with('updated','-');
     }
 
     /**
@@ -146,7 +152,7 @@ class ProductController extends Controller
   
         Product::destroy($id);
         return redirect()->route('products.index')
-        ->with('success', 'El producto ha sido eliminado.');
+        ->with('deleted','-');
 
     }
 }

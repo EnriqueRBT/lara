@@ -23,7 +23,7 @@ return [
     'EditarP' => 'Edit Product',
     'Editar' => 'Edit',
     'Borrar' => 'Delete',
-
-
-   
+    'Created' => 'The product has been created',
+    'Deleted' => 'The product has been deleted',
+    'Updated' => 'The product has been updated',   
 ];
